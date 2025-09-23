@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinityy Academy - Your Future, Unlimited</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* -------------------- Custom CSS Variables -------------------- */
+        :root {
+            --primary-color: #f97316; /* Orange */
+            --secondary-color: #dc2626; /* Red */
+            --accent-color: #fef3c7; /* Lighter Yellow */
+            --bg-color-start: #f97316;
+            --bg-color-end: #dc2626;
+        }
+
+        /* -------------------- General Body Styling -------------------- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(135deg, #fccf04, #c45e05, #7b0101);
+            background-size: 300% 300%;
+            animation: slantShift 10s ease-in-out infinite;
+            color: white;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes slantShift {
+            0% { background-position: 100% 0%; }
+            50% { background-position: 0% 100%; }
+            100% { background-position: 100% 0%; }
+        }
+
+        /* -------------------- Particle Background -------------------- */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particles span {
+            position: absolute;
+            display: block;
+            width: 0.5px;
+            height: 0.5px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 2px #fff, 0 0 4px #fff;
+            animation: floatParticles linear infinite;
+        }
+
+        @keyframes floatParticles {
+            from { transform: translateY(0) scale(1); opacity: 0.8; }
+            to { transform: translateY(-120vh) scale(0.5); opacity: 0; }
+        }
+
+        /* -------------------- Section Separator -------------------- */
+        .section-separator {
+            height: 4px;
+            width: 150px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 0 auto 2.5rem;
+            border-radius: 2px;
+        }
+
+        /* -------------------- Gradient Text -------------------- */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* -------------------- Floating Elements Animation -------------------- */
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* -------------------- Card Hover -------------------- */
+        .card {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: center;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02) rotateZ(1deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* -------------------- Button Shine -------------------- */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+
+        .btn-shine::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.1) 100%);
+            transform: rotate(30deg);
+            transition: transform 0.5s ease-out;
+            z-index: -1;
+        }
+
+        .btn-shine:hover::before {
+            transform: translate(25%, 25%) rotate(30deg);
+        }
+
+        /* -------------------- Skill Bars -------------------- */
+        .skill-bar {
+            background-color: #e5e7eb;
+            border-radius: 9999px;
+            height: 12px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            height: 100%;
+            width: 0;
+            transition: width 1.5s ease-out;
+        }
+
+        /* -------------------- Testimonial Slider -------------------- */
+        .testimonial-container { position: relative; overflow: hidden; }
+        .testimonial-slider { display: flex; transition: transform 0.8s ease-in-out; }
+        .testimonial-slide { flex: 0 0 100%; opacity: 0; transition: opacity 0.8s ease-in-out; }
+        .testimonial-slide.active { opacity: 1; }
+        .testimonial-dot { height: 10px; width: 10px; background-color: #e5e7eb; border-radius: 50%; transition: background-color 0.3s; cursor: pointer; }
+        .testimonial-dot.active { background-color: var(--primary-color); }
+
+        /* -------------------- Photo Gallery Lightbox -------------------- */
+        .lightbox-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.9); z-index: 100; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+        .lightbox-modal.show { opacity: 1; visibility: visible; }
+        .lightbox-image {
+            max-width: 90%; max-height: 90%; border-radius: 12px; transform: scale(0.8); transition: transform 0.3s ease-in-out;
+        }
+        .lightbox-modal.show .lightbox-image { transform: scale(1); }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 2.5rem; color: white; cursor: pointer; transition: transform 0.2s; }
+        .lightbox-close:hover { transform: scale(1.1); }
+
+        /* -------------------- Back to Top Button -------------------- */
+        #backToTopBtn {
+            position: fixed; bottom: 30px; right: 30px; z-index: 99;
+            width: 50px; height: 50px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            opacity: 0; visibility: hidden; transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        #backToTopBtn.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        #backToTopBtn:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.3); transform: translateY(-2px); }
+
+        /* -------------------- Responsive Navbar -------------------- */
+        .mobile-menu { transition: all 0.3s ease-in-out; max-height: 0; overflow: hidden; opacity: 0; }
+        .mobile-menu.open { max-height: 500px; opacity: 1; }
+
+        /* -------------------- FAQ Accordion -------------------- */
+        .faq-accordion-item .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out; }
+        .faq-accordion-item.active .faq-content { max-height: 500px; padding-top: 1rem; padding-bottom: 1rem; }
+        .faq-accordion-header i { transition: transform 0.3s ease-in-out; }
+        .faq-accordion-item.active .faq-accordion-header i { transform: rotate(180deg); }
+
+        /* -------------------- Scroll Animation -------------------- */
+        .animate-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+    </style>
+
+    <script>
+        // -------------------- Particle Background Script --------------------
+        document.addEventListener("DOMContentLoaded", () => {
+            const particlesContainer = document.createElement("div");
+            particlesContainer.className = "particles";
+            document.body.appendChild(particlesContainer);
+
+            const totalParticles = 1000;
+            for (let i = 0; i < totalParticles; i++) {
+                const particle = document.createElement("span");
+                particle.style.top = Math.random() * 100 + "vh";
+                particle.style.left = Math.random() * 100 + "vw";
+                particle.style.animationDuration = (5 + Math.random() * 10) + "s";
+                particlesContainer.appendChild(particle);
+            }
+        });
+    </script>
+</head>
+
+
+<script>
+  window.addEventListener("load", () => {
+    window.scrollTo(0, 0);
+  });
+</script>
+
+
+<body class="font-sans text-gray-800 leading-relaxed">
+
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg">
+        <div class="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <!-- Logo -->
+<h1 class="text-2xl md:text-3xl font-bold flex items-center space-x-2 relative">
+  <!-- Infinity Loader -->
+  <svg id="infinity-loader" viewBox="0 0 120 60" width="50" height="30" class="text-red-600">
+    <path d="M10,30 C10,10 50,10 60,30 C70,50 110,50 110,30 C110,10 70,10 60,30 C50,50 10,50 10,30 Z"
+          stroke="red" stroke-width="6" fill="none" stroke-linecap="round"/>
+  </svg>
+  <span id="logo-text" class="text-orange-500 font-bold opacity-0">INFINITYY ACADEMY</span>
+</h1>
+
+<style>
+  /* Infinity path animation */
+  #infinity-loader path {
+    stroke-dasharray: 300;   /* total length of path */
+    stroke-dashoffset: 300;  /* start hidden */
+    animation: draw 2s linear infinite;
+  }
+
+  @keyframes draw {
+    0% { stroke-dashoffset: 300; }
+    50% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -300; }
+  }
+
+  /* Text fade in */
+  #logo-text.show {
+    opacity: 1;
+    transition: opacity 1s ease-in-out 0.5s;
+  }
+</style>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    // Delay text fade in to sync with animation
+    setTimeout(() => {
+      document.getElementById("logo-text").classList.add("show");
+    }, 1000);
+  });
+</script>
+
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="hover:text-red-600 font-semibold transition-colors">Home</a>
+                <a href="#about" class="hover:text-red-600 font-semibold transition-colors">About</a>
+                <a href="#courses" class="hover:text-red-600 font-semibold transition-colors">Courses</a>
+                <a href="#faculty" class="hover:text-red-600 font-semibold transition-colors">Faculty</a>
+                <a href="#gallery" class="hover:text-red-600 font-semibold transition-colors">Gallery</a>
+                <a href="#faq" class="hover:text-red-600 font-semibold transition-colors">FAQ</a>
+                <a href="#contact" class="hover:text-red-600 font-semibold transition-colors">Contact</a>
+                <a href="#student-form" class="bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-orange-500 transition-colors btn-shine">Register Now</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-2xl" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars" id="menuIcon"></i>
+            </button>
+        </div>
+
+   <!-- Mobile Navigation -->
+<div id="mobileNav" class="mobile-menu md:hidden bg-gradient-to-b from-white via-red-50 to-white border-t border-gray-200 shadow-lg">
+    <ul class="flex flex-col items-center space-y-4 py-6">
+        <li><a href="#home" class="block py-2 px-6 text-gray-800 hover:text-red-600 hover:bg-red-100 rounded transition-colors" onclick="toggleMobileMenu()">Home</a></li>
+        <li><a href="#about" class="block py-2 px-6 text-gray-800 hover:text-red-600 hover:bg-red-100 rounded transition-colors" onclick="toggleMobileMenu()">About</a></li>
+        <li><a href="#courses" class="block py-2 px-6 text-gray-800 hover:text-red-600 hover:bg-red-100 rounded transition-colors" onclick="toggleMobileMenu()">Courses</a></li>
+        <li><a href="#faculty" class="block py-2 px-6 text-gray-800 hover:text-red-600 hover:bg-red-100 rounded transition-colors" onclick="toggleMobileMenu()">Faculty</a></li>
+        <li><a href="#gallery" class="block py-2 px-6 text-gray-800 hover:text-red-600 hover:bg-red-100 rounded transition-colors" onclick="toggleMobileMenu()">Gallery</a></li>
+        <li><a href="#faq" class="block py-2 px-6 text-gray-800 hover:text-red-600 hover:bg-red-100 rounded transition-colors" onclick="toggleMobileMenu()">FAQ</a></li>
+        <li><a href="#contact" class="block py-2 px-6 text-gray-800 hover:text-red-600 hover:bg-red-100 rounded transition-colors" onclick="toggleMobileMenu()">Contact</a></li>
+        <li>
+            <a href="#student-form" class="bg-red-600 text-white px-8 py-2 rounded-full text-center hover:bg-orange-500 transition-colors shadow-md" onclick="toggleMobileMenu()">Register Now</a>
+        </li>
+    </ul>
+</div>
+
+    </header>
+
+    <main>
+<!-- Hero Section -->
+<section id="home" class="relative flex items-center justify-center min-h-screen px-4 md:px-6 overflow-hidden bg-cover bg-center" 
+         style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black opacity-60"></div>
+
+    <!-- Background elements with animation -->
+    <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-orange-500 opacity-20 rounded-full floating-element"></div>
+    <div class="absolute bottom-1/3 right-1/4 w-40 h-40 bg-red-600 opacity-20 rounded-full floating-element animate-delay-[500ms]"></div>
+    
+    <!-- Main Content -->
+    <div class="relative z-10 text-center text-white max-w-5xl">
+
+        <!-- Typewriter Heading -->
+        <h1 class="text-4xl md:text-7xl font-extrabold mb-6 leading-tight drop-shadow-lg text-white text-center">
+            <span id="hero-line1"></span><br>
+            <span id="hero-line2"></span>
+        </h1>
+
+        <style>
+        #hero-line1,
+        #hero-line2 {
+            display: inline-block;
+            white-space: nowrap;
+            border-right: 4px solid rgba(255, 255, 255, 0.75); /* blinking cursor */
+            overflow: hidden;
+            animation: blinkCursor 0.8s step-end infinite;
+        }
+        @keyframes blinkCursor {
+            from { border-color: transparent; }
+            to   { border-color: rgba(255, 255, 255, 0.75); }
+        }
+        </style>
+
+        <script>
+        const line1 = document.getElementById("hero-line1");
+        const line2 = document.getElementById("hero-line2");
+
+        const text1 = "A Place Where Curiosity";
+        const text2 = "Meets Excellence.";
+
+        let i1 = 0, i2 = 0;
+
+        function typeLine1() {
+            if (i1 < text1.length) {
+                line1.textContent += text1.charAt(i1);
+                i1++;
+                setTimeout(typeLine1, 75);
+            } else {
+                setTimeout(typeLine2, 300);
+            }
+        }
+
+        function typeLine2() {
+            if (i2 < text2.length) {
+                line2.textContent += text2.charAt(i2);
+                i2++;
+                setTimeout(typeLine2, 120);
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", typeLine1);
+        </script>
+ 
+        <!-- Subtitle -->
+        <p class="text-lg md:text-2xl mb-6 text-gray-200 drop-shadow-md animate-fade-in-up animate-delay-[300ms]">
+            Unlock your true potential at INFINITYY ACADEMY with expert guidance, personalized attention, and a proven path to academic excellence.
+        </p>
+
+        <!-- Highlight Badge -->
+        <div class="relative inline-block mb-10">
+            <div class="highlight-badge relative bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-600 
+                        text-gray-900 font-extrabold px-1 py-2 rounded-full shadow-xl 
+                        border border-yellow-200 overflow-hidden text-base tracking-wide">
+                <span class="relative z-10 flex items-center justify-center gap-1">
+                    🎉 <span class="uppercase">First 2 Classes</span> 
+                    <span class="text-red-600">FREE!</span>
+                    <span class="uppercase">Book Now</span>
+                </span>
+            </div>
+        </div>
+
+        <style>
+        .highlight-badge {
+            animation: badgeIntro 3.5s ease-in-out forwards;
+            position: relative;
+        }
+
+        .highlight-badge::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        </style>
+
+        <!-- Call to Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <a href="#registration" 
+               class="bg-gradient-to-r from-orange-500 to-red-600 text-white px-10 py-4 rounded-full text-xl font-bold shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 transform hover:scale-105 btn-shimmer">
+                <i class="fas fa-user-plus mr-3"></i> Enroll Today
+            </a>
+
+            <a href="#courses" 
+               class="border-2 border-white text-white px-10 py-4 rounded-full text-xl font-bold hover:bg-white hover:text-orange-600 transition-all duration-300 transform hover:scale-105">
+                <i class="fas fa-book-open mr-3"></i> View Courses
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- About Us Section -->
+<section id="about" class="py-20">
+  <div class="container mx-auto px-4 md:px-6 bg-white p-6 md:p-12 rounded-2xl shadow-2xl animate-on-scroll">
+    
+    <!-- Heading -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-extrabold gradient-text mb-4">
+        About INFINITYY ACADEMY
+      </h2>
+      <div class="section-separator"></div>
+      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+        Shaping futures through quality education and personalized mentorship.
+      </p>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      
+      <!-- Mission Section -->
+      <div>
+        <h3 class="text-2xl md:text-3xl font-bold text-orange-600 mb-6 animate-on-scroll animate-delay-[200ms]">
+          Our Mission
+        </h3>
+        <p class="text-lg text-gray-700 mb-6 leading-relaxed animate-on-scroll animate-delay-[400ms]">
+          At INFINITYY ACADEMY, we believe every student has unlimited potential. Our mission is to unlock that potential through innovative teaching methods, personalized attention, and a nurturing learning environment. We are committed to fostering not just academic success, but also a lifelong love for learning.
+        </p>
+
+        <!-- Mission Points -->
+        <div class="space-y-4">
+          <div class="flex items-center space-x-3 animate-on-scroll animate-delay-[500ms]">
+            <i class="fas fa-check-circle text-red-600 text-xl floating-element"></i>
+            <span class="text-lg font-medium text-gray-800">
+              Expert Faculty with over a decade of experience
+            </span>
+          </div>
+
+          <div class="flex items-center space-x-3 animate-on-scroll animate-delay-[600ms]">
+            <i class="fas fa-check-circle text-red-600 text-xl floating-element animate-delay-[200ms]"></i>
+            <span class="text-lg font-medium text-gray-800">
+              Small batch sizes for personalized attention
+            </span>
+          </div>
+
+          <div class="flex items-center space-x-3 animate-on-scroll animate-delay-[700ms]">
+            <i class="fas fa-check-circle text-red-600 text-xl floating-element animate-delay-[400ms]"></i>
+            <span class="text-lg font-medium text-gray-800">
+              Regular assessments and transparent progress tracking
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image with Badge -->
+      <div class="relative animate-on-scroll animate-delay-[300ms]">
+        <img 
+          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+          alt="Students Learning" 
+          class="rounded-2xl shadow-2xl w-full"
+        >
+        <div class="absolute -bottom-6 -right-6 bg-red-600 text-white p-6 rounded-2xl shadow-xl floating-element animate-delay-[600ms] hidden md:block">
+          <div class="text-3xl font-bold">100%</div>
+          <div class="text-sm md:text-base">Dedicated Support</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+        
+<!-- Why Choose Us Section -->
+<section id="why-us" class="py-20">
+  <div class="container mx-auto px-4 md:px-6 bg-white p-6 md:p-12 rounded-2xl shadow-2xl animate-on-scroll">
+    
+    <!-- Heading -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-extrabold gradient-text mb-4">
+        Why Choose INFINITYY?
+      </h2>
+      <div class="section-separator"></div>
+      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+        Experience the difference that sets us apart from the rest.
+      </p>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+
+      <!-- Card 1 -->
+      <div class="card p-6 rounded-xl bg-red-50 text-red-600 animate-on-scroll animate-delay-[400ms]">
+        <i class="fas fa-chalkboard-teacher text-5xl mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">Expert Faculty</h3>
+        <p class="text-gray-700">
+          Learn from seasoned professionals who are passionate about teaching. 
+          20+ years Teaching Experience
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card p-6 rounded-xl bg-red-50 text-red-600 animate-on-scroll animate-delay-[400ms]">
+        <i class="fas fa-users text-5xl mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">Small Batch Sizes</h3>
+        <p class="text-gray-700">
+          We ensure every student receives the individual attention they deserve.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card p-6 rounded-xl bg-yellow-50 text-yellow-600 animate-on-scroll animate-delay-[600ms]">
+        <i class="fas fa-chart-line text-5xl mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">Holistic Development</h3>
+        <p class="text-gray-700">
+          We focus on conceptual clarity and overall personality development.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Courses Section -->
+<section id="courses" class="py-20">
+  <div class="container mx-auto px-4 md:px-6 bg-white p-6 md:p-12 rounded-2xl shadow-2xl animate-on-scroll">
+
+    <!-- Heading -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-extrabold gradient-text mb-4">
+        Our Courses
+      </h2>
+      <div class="section-separator"></div>
+      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+        Comprehensive curriculum designed for academic excellence in key subjects.
+      </p>
+    </div>
+
+    <!-- Courses Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Mathematics -->
+      <div class="card p-6 rounded-xl bg-red-50 text-red-600 animate-on-scroll animate-delay-[400ms]">
+        <div class="text-center mb-6">
+          <i class="fas fa-calculator text-6xl text-red-600 mb-4 floating-element"></i>
+          <h3 class="text-2xl font-bold text-orange-600 mb-2">Mathematics</h3>
+          <p class="text-gray-600">Classes 8-12</p>
+        </div>
+        <ul class="space-y-3 mb-6 text-left text-gray-700">
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Conceptual Clarity through Real-Life Examples</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Interactive & Engaging Classroom Environment</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Personalized Attention in Small Batches</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Proven Track Record of Student Success</span></li>
+        </ul>
+        <a href="#student-form" class="btn-shine bg-orange-500 text-white px-6 py-3 rounded-full font-semibold inline-block hover:bg-red-600 transition-colors">
+          Explore Now
+        </a>
+      </div>
+
+      <!-- Science -->
+      <div class="card p-6 rounded-xl bg-yellow-50 text-yellow-600 animate-on-scroll animate-delay-[600ms]">
+        <div class="text-center mb-6">
+          <i class="fas fa-flask text-6xl text-red-600 mb-4 floating-element animate-delay-[200ms]"></i>
+          <h3 class="text-2xl font-bold text-orange-600 mb-2">Science</h3>
+          <p class="text-gray-600">Classes 8-12</p>
+        </div>
+        <ul class="space-y-3 mb-6 text-left text-gray-700">
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Exploring the Wonders of Physics in Action</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Unraveling the Secrets of Chemistry Reactions</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Discovering Life through Modern Biology</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Hands-on Learning with Innovative Experiments</span></li>
+        </ul>
+        <a href="#student-form" class="btn-shine bg-red-600 text-white px-6 py-3 rounded-full font-semibold inline-block hover:bg-orange-500 transition-colors">
+          Explore Now
+        </a>
+      </div>
+
+      <!-- NEET/JEE Foundation -->
+      <div class="card p-6 rounded-xl bg-red-50 text-yellow-600 animate-on-scroll animate-delay-[400ms]">
+        <div class="text-center mb-6">
+          <i class="fas fa-microscope text-6xl text-red-600 mb-4 floating-element animate-delay-[400ms]"></i>
+          <h3 class="text-2xl font-bold text-orange-600 mb-2">NEET/JEE Foundation</h3>
+          <p class="text-gray-600">Classes 11-12</p>
+        </div>
+        <ul class="space-y-3 mb-6 text-left text-gray-700">
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Competitive Exam Focused Modules</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Daily Practice Problems (DPPs)</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Mock Tests & Performance Analysis</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Doubt Clearing Sessions</span></li>
+        </ul>
+        <a href="#student-form" class="btn-shine bg-orange-500 text-white px-6 py-3 rounded-full font-semibold inline-block hover:bg-red-600 transition-colors">
+          Explore Now
+        </a>
+      </div>
+
+      <!-- Olympiads -->
+      <div class="card p-6 rounded-xl bg-blue-50 text-blue-600 animate-on-scroll animate-delay-[500ms]">
+        <div class="text-center mb-6">
+          <i class="fas fa-trophy text-6xl text-blue-600 mb-4 floating-element"></i>
+          <h3 class="text-2xl font-bold text-orange-600 mb-2">Olympiads</h3>
+          <p class="text-gray-600">Classes 6-12</p>
+        </div>
+        <ul class="space-y-3 mb-6 text-left text-gray-700">
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Specialized Training for IMO, NSO, IEO & More</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Logical Reasoning & Analytical Skills</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Weekly Practice Papers & Discussions</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Exposure to National & International Competitions</span></li>
+        </ul>
+        <a href="#student-form" class="btn-shine bg-blue-600 text-white px-6 py-3 rounded-full font-semibold inline-block hover:bg-orange-500 transition-colors">
+          Explore Now
+        </a>
+      </div>
+
+      <!-- CUET -->
+      <div class="card p-6 rounded-xl bg-green-50 text-green-600 animate-on-scroll animate-delay-[600ms]">
+        <div class="text-center mb-6">
+          <i class="fas fa-university text-6xl text-green-600 mb-4 floating-element"></i>
+          <h3 class="text-2xl font-bold text-orange-600 mb-2">CUET Preparation</h3>
+          <p class="text-gray-600">Class 12 & Droppers</p>
+        </div>
+        <ul class="space-y-3 mb-6 text-left text-gray-700">
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Domain-Specific Subject Coaching</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>General Test & Language Paper Practice</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Regular Mock Tests Based on CUET Pattern</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Time Management & Exam Strategies</span></li>
+        </ul>
+        <a href="#student-form" class="btn-shine bg-green-600 text-white px-6 py-3 rounded-full font-semibold inline-block hover:bg-orange-500 transition-colors">
+          Explore Now
+        </a>
+      </div>
+
+      <!-- Foundation Courses -->
+      <div class="card p-6 rounded-xl bg-purple-50 text-purple-600 animate-on-scroll animate-delay-[700ms]">
+        <div class="text-center mb-6">
+          <i class="fas fa-book text-6xl text-purple-600 mb-4 floating-element"></i>
+          <h3 class="text-2xl font-bold text-orange-600 mb-2">Foundation Courses</h3>
+          <p class="text-gray-600">Classes 8-10</p>
+        </div>
+        <ul class="space-y-3 mb-6 text-left text-gray-700">
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Strong Base in Math & Science Concepts</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Skill-Building for Competitive Exams</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Regular Tests & Feedback</span></li>
+          <li class="flex items-center space-x-2"><i class="fas fa-check-square text-orange-500"></i><span>Focus on Logical Thinking & Problem Solving</span></li>
+        </ul>
+        <a href="#student-form" class="btn-shine bg-purple-600 text-white px-6 py-3 rounded-full font-semibold inline-block hover:bg-orange-500 transition-colors">
+          Explore Now
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Faculty Section -->
+<section id="faculty" class="py-20 scroll-reveal">
+  <div class="container mx-auto px-4 md:px-6 bg-white p-8 md:p-12 rounded-2xl shadow-2xl">
+
+    <!-- Heading -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-extrabold gradient-text mb-4">
+        Our Expert Faculty
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-600 mx-auto mb-6"></div>
+    </div>
+
+    <!-- Faculty Grid -->
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- Faculty Card 1 -->
+      <div class="card text-center p-6 rounded-xl bg-purple-50">
+        <img 
+          src="images\logo.png" 
+          alt="Mr. Sudhir Sharma" 
+          class="faculty-img w-32 h-32 rounded-full mx-auto mb-4 object-cover cursor-pointer"
+        >
+        <h3 class="text-xl font-bold text-orange-600 mb-2">Mr. Sudhir Sharma</h3>
+        <p class="text-gray-600 mb-2">Physics Expert</p>
+        <p class="text-sm text-gray-500">
+          M.Sc. Physics, B.sc. Non-Medical, B.ED. Science 20+ years Teaching Experience
+        </p>
+        <div class="flex justify-center space-x-1 text-yellow-400 mt-3">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+      </div>
+
+      <!-- Faculty Card 2 -->
+      <div class="card text-center p-6 rounded-xl bg-purple-50">
+        <img 
+          src="https://images.unplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" 
+          alt="Mr. Ajay Sir" 
+          class="faculty-img w-32 h-32 rounded-full mx-auto mb-4 object-cover cursor-pointer"
+        >
+        <h3 class="text-xl font-bold text-orange-600 mb-2">Mr. Ajay Sir</h3>
+        <p class="text-gray-600 mb-2">Chemistry Expert</p>
+        <p class="text-sm text-gray-500">
+          M.Sc. Chemistry, 15+ years Teaching Experience
+        </p>
+        <div class="flex justify-center space-x-1 text-yellow-400 mt-3">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Modal for Enlarged Image -->
+<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 hidden flex items-center justify-center z-50">
+  <span id="closeModal" class="absolute top-5 right-8 text-white text-3xl cursor-pointer">&times;</span>
+  <img id="modalImg" class="max-w-[90%] max-h-[90%] rounded-2xl shadow-2xl" />
+</div>
+
+<script>
+  // Get elements
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const closeModal = document.getElementById("closeModal");
+
+  // Add click event to all faculty images
+  document.querySelectorAll(".faculty-img").forEach(img => {
+    img.addEventListener("click", () => {
+      modal.classList.remove("hidden");
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+    });
+  });
+
+  // Close modal
+  closeModal.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+
+  // Close modal on background click
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+    }
+  });
+</script>
+
+
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-20">
+  <style>
+    #testimonialSlider {
+      position: relative;
+      max-width: 100%;
+    }
+    .testimonial-slide {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .4s ease, transform .4s ease;
+      padding: 1rem 0;
+    }
+    .testimonial-slide.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Dots */
+    #testimonialDots {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+      justify-content: center;
+    }
+    .testimonial-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 9999px;
+      background: #e5e7eb;
+      cursor: pointer;
+      transition: transform .15s ease, background .2s ease;
+    }
+    .testimonial-dot.active {
+      background: #f97316;
+      transform: scale(1.2);
+    }
+
+    /* Arrows */
+    .testimonial-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      font-size: 1.5rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      z-index: 10;
+    }
+    .testimonial-arrow:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    .testimonial-arrow.left { left: 0.75rem; }
+    .testimonial-arrow.right { right: 0.75rem; }
+  </style>
+
+  <div class="container mx-auto px-4 md:px-6 bg-white p-6 md:p-12 rounded-2xl shadow-2xl animate-on-scroll">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-extrabold gradient-text mb-4">What Our Students Say</h2>
+      <div class="section-separator"></div>
+      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+        Hear from the students who have excelled with us.
+      </p>
+    </div>
+
+    <div class="testimonial-container relative">
+      <!-- Arrows -->
+      <button class="testimonial-arrow left" id="prevTestimonial" aria-label="Previous testimonial">&#10094;</button>
+      <button class="testimonial-arrow right" id="nextTestimonial" aria-label="Next testimonial">&#10095;</button>
+
+      <!-- Slides -->
+      <div class="card p-6 rounded-xl bg-gradient-to-r from-orange-100 via-pink-100 to-red-100 text-gray-700 animate-on-scroll animate-delay-[400ms]" id="testimonialSlider">
+
+        <div class="testimonial-slide active px-4 md:px-12 text-center">
+          <i class="fas fa-quote-left text-4xl text-orange-500 mb-4"></i>
+          <p class="text-gray-700 text-lg italic leading-relaxed">
+            "INFINITYY ACADEMY changed my perspective on learning. The teachers are incredibly supportive and make complex topics easy to understand. Thanks to them, I scored a distinction in my final exams!"
+          </p>
+          <h4 class="font-bold text-orange-600 mt-6">- Rohit Sharma, Class 10</h4>
+        </div>
+
+        <div class="testimonial-slide px-4 md:px-12 text-center">
+          <i class="fas fa-quote-left text-4xl text-orange-500 mb-4"></i>
+          <p class="text-gray-700 text-lg italic leading-relaxed">
+            "The small batch sizes and personalized attention were a game-changer for me. My doubts were always cleared, and I felt confident and well-prepared for every test. Highly recommended!"
+          </p>
+          <h4 class="font-bold text-orange-600 mt-6">- Shobhit Dwivedi, Class 9</h4>
+        </div>
+
+        <div class="testimonial-slide px-4 md:px-12 text-center">
+          <i class="fas fa-quote-left text-4xl text-orange-500 mb-4"></i>
+          <p class="text-gray-700 text-lg italic leading-relaxed">
+            "The faculty at Infinityy Academy is top-notch. They are not just teachers, but mentors who genuinely care about your growth. My confidence in mathematics and science has never been higher."
+          </p>
+          <h4 class="font-bold text-orange-600 mt-6">- Arjun Varma, Class 11</h4>
+        </div>
+      </div>
+
+      <!-- Dots -->
+      <div class="flex justify-center mt-8" id="testimonialDots">
+        <span class="testimonial-dot active" data-index="0"></span>
+        <span class="testimonial-dot" data-index="1"></span>
+        <span class="testimonial-dot" data-index="2"></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slides = document.querySelectorAll('#testimonialSlider .testimonial-slide');
+      const dots = document.querySelectorAll('#testimonialDots .testimonial-dot');
+      const prevBtn = document.getElementById('prevTestimonial');
+      const nextBtn = document.getElementById('nextTestimonial');
+      const container = document.querySelector('.testimonial-container');
+      let currentIndex = 0;
+      let autoplayId = null;
+      const AUTOPLAY_DELAY = 5000;
+
+      function showSlide(index) {
+        index = (index + slides.length) % slides.length;
+        slides.forEach((s, i) => s.classList.toggle('active', i === index));
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+        currentIndex = index;
+      }
+
+      // Dots click
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          showSlide(+dot.dataset.index);
+          resetAutoplay();
+        });
+      });
+
+      // Arrows
+      prevBtn.addEventListener('click', () => { showSlide(currentIndex - 1); resetAutoplay(); });
+      nextBtn.addEventListener('click', () => { showSlide(currentIndex + 1); resetAutoplay(); });
+
+      // Autoplay
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayId = setInterval(() => showSlide(currentIndex + 1), AUTOPLAY_DELAY);
+      }
+      function stopAutoplay() {
+        if (autoplayId) clearInterval(autoplayId);
+        autoplayId = null;
+      }
+      function resetAutoplay() {
+        stopAutoplay();
+        startAutoplay();
+      }
+
+      // Init
+      showSlide(0);
+      startAutoplay();
+
+      // Pause on hover
+      container.addEventListener('mouseenter', stopAutoplay);
+      container.addEventListener('mouseleave', startAutoplay);
+    });
+  </script>
+</section>
+
+
+<!-- Gallery Section -->
+<section id="gallery" class="py-20">
+  <div class="container mx-auto px-4 md:px-6 bg-white p-6 md:p-12 rounded-2xl shadow-2xl animate-on-scroll">
+    
+    <!-- Section Heading -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-extrabold gradient-text mb-4">Our Gallery</h2>
+      <div class="section-separator"></div>
+      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+        Moments of learning, collaboration, and fun.
+      </p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 animate-on-scroll">
+      
+      <img 
+        src="https://images.unsplash.com/photo-1546410531-bb4439c14170?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" 
+        class="gallery-item w-full h-48 md:h-64 object-cover rounded-xl shadow-lg cursor-pointer transform hover:scale-105 transition-transform duration-300"
+      >
+
+      <img 
+        src="https://images.unslash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" 
+        class="gallery-item w-full h-48 md:h-64 object-cover rounded-xl shadow-lg cursor-pointer transform hover:scale-105 transition-transform duration-300"
+      >
+
+      <img 
+        src="https://images.unsplash.com/photo-1549298539-c56784d1421e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" 
+        class="gallery-item w-full h-48 md:h-64 object-cover rounded-xl shadow-lg cursor-pointer transform hover:scale-105 transition-transform duration-300"
+      >
+
+      <img 
+        src="https://images.unsplsh.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" 
+        class="gallery-item w-full h-48 md:h-64 object-cover rounded-xl shadow-lg cursor-pointer transform hover:scale-105 transition-transform duration-300"
+      >
+
+      <img 
+        src="https://images.unsplash.com/photo-1543269824-2c17d23a9d94?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" 
+        class="gallery-item w-full h-48 md:h-64 object-cover rounded-xl shadow-lg cursor-pointer transform hover:scale-105 transition-transform duration-300"
+      >
+
+      <img 
+        src="https://images.unsplash.com/photo-1579895089222-77781b7e6189?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" 
+        class="gallery-item w-full h-48 md:h-64 object-cover rounded-xl shadow-lg cursor-pointer transform hover:scale-105 transition-transform duration-300"
+      >
+
+      <img 
+        src="https://images.unsplash.com/photo-1579895089222-77781b7e6189?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" 
+        class="gallery-item w-full h-48 md:h-64 object-cover rounded-xl shadow-lg cursor-pointer transform hover:scale-105 transition-transform duration-300"
+      >
+      
+      <img 
+        src="https://images.unsplash.com/photo-1579895089222-77781b7e6189?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" 
+        class="gallery-item w-full h-48 md:h-64 object-cover rounded-xl shadow-lg cursor-pointer transform hover:scale-105 transition-transform duration-300"
+      >
+    </div>
+    
+  </div>
+</section>
+
+    <!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox-modal">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-image" id="lightboxImage" src="" alt="Enlarged Image">
+</div>
+
+<!-- FAQ Section -->
+<section id="faq" class="py-20">
+  <div class="container mx-auto px-4 md:px-6 bg-white p-6 md:p-12 rounded-2xl shadow-2xl animate-on-scroll">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-extrabold gradient-text mb-4">
+        Frequently Asked Questions
+      </h2>
+      <div class="section-separator"></div>
+      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+        Find quick answers to common questions about our academy.
+      </p>
+    </div>
+
+    <!-- FAQ Items -->
+    <div class="max-w-4xl mx-auto space-y-4">
+
+      <!-- FAQ 1 -->
+      <div class="faq-item bg-gray-50 rounded-xl shadow-md overflow-hidden">
+        <div class="faq-header p-6 flex justify-between items-center cursor-pointer hover:bg-orange-100 transition">
+          <h3 class="text-lg font-semibold text-gray-800">
+            What is the teaching methodology at Infinity Academy?
+          </h3>
+          <i class="fas fa-chevron-down text-orange-500 transition-transform duration-300"></i>
+        </div>
+        <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white px-6">
+          <p class="py-4 text-gray-700">
+            Our methodology focuses on conceptual clarity, interactive sessions, and regular practice.
+            We use a blend of traditional teaching and modern tools to make learning engaging and effective.
+            Our small class sizes ensure every student gets individual attention.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="faq-item bg-gray-50 rounded-xl shadow-md overflow-hidden">
+        <div class="faq-header p-6 flex justify-between items-center cursor-pointer hover:bg-orange-100 transition">
+          <h3 class="text-lg font-semibold text-gray-800">
+            How do you track a student's progress?
+          </h3>
+          <i class="fas fa-chevron-down text-orange-500 transition-transform duration-300"></i>
+        </div>
+        <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white px-6">
+          <p class="py-4 text-gray-700">
+            We conduct weekly and monthly assessments to evaluate student progress.
+            Detailed performance reports are shared with both students and parents.
+            Our faculty provides personalized feedback and guidance based on these reports to help students improve.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item bg-gray-50 rounded-xl shadow-md overflow-hidden">
+        <div class="faq-header p-6 flex justify-between items-center cursor-pointer hover:bg-orange-100 transition">
+          <h3 class="text-lg font-semibold text-gray-800">
+            What kind of doubt-clearing support is available?
+          </h3>
+          <i class="fas fa-chevron-down text-orange-500 transition-transform duration-300"></i>
+        </div>
+        <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white px-6">
+          <p class="py-4 text-gray-700">
+            We offer dedicated doubt-clearing sessions after every class.
+            Students can also schedule one-on-one sessions with their teachers for complex topics.
+            Our goal is to ensure no student leaves a class with an unresolved question.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item bg-gray-50 rounded-xl shadow-md overflow-hidden">
+        <div class="faq-header p-6 flex justify-between items-center cursor-pointer hover:bg-orange-100 transition">
+          <h3 class="text-lg font-semibold text-gray-800">
+            What are the class timings?
+          </h3>
+          <i class="fas fa-chevron-down text-orange-500 transition-transform duration-300"></i>
+        </div>
+        <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white px-6">
+          <p class="py-4 text-gray-700">
+            Class timings vary by subject and batch.
+            We offer both morning and evening batches to accommodate different student schedules.
+            Please contact us for the detailed schedule for the course you are interested in.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="faq-item bg-gray-50 rounded-xl shadow-md overflow-hidden">
+        <div class="faq-header p-6 flex justify-between items-center cursor-pointer hover:bg-orange-100 transition">
+          <h3 class="text-lg font-semibold text-gray-800">
+            Do you provide demo classes?
+          </h3>
+          <i class="fas fa-chevron-down text-orange-500 transition-transform duration-300"></i>
+        </div>
+        <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white px-6">
+          <p class="py-4 text-gray-700">
+            Yes, we provide 2 free demo classes so that students can experience our teaching style and methodology before enrolling in a course.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 6 -->
+      <div class="faq-item bg-gray-50 rounded-xl shadow-md overflow-hidden">
+        <div class="faq-header p-6 flex justify-between items-center cursor-pointer hover:bg-orange-100 transition">
+          <h3 class="text-lg font-semibold text-gray-800">
+            Are classes available online or offline?
+          </h3>
+          <i class="fas fa-chevron-down text-orange-500 transition-transform duration-300"></i>
+        </div>
+        <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white px-6">
+          <p class="py-4 text-gray-700">
+            We currently provide only offline classes.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 7 -->
+      <div class="faq-item bg-gray-50 rounded-xl shadow-md overflow-hidden">
+        <div class="faq-header p-6 flex justify-between items-center cursor-pointer hover:bg-orange-100 transition">
+          <h3 class="text-lg font-semibold text-gray-800">
+            What are the fees and payment options?
+          </h3>
+          <i class="fas fa-chevron-down text-orange-500 transition-transform duration-300"></i>
+        </div>
+        <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white px-6">
+          <p class="py-4 text-gray-700">
+            Our fees vary by course and batch. Flexible payment options are available, including monthly installments.
+            Please contact our team for detailed fee structure.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Accordion Script -->
+<script>
+  document.querySelectorAll(".faq-header").forEach(header => {
+    header.addEventListener("click", () => {
+      const faqItem = header.parentElement;
+      const body = faqItem.querySelector(".faq-body");
+      const icon = header.querySelector("i");
+
+      // Close other FAQs (optional, keeps only one open at a time)
+      document.querySelectorAll(".faq-body").forEach(el => {
+        if (el !== body) {
+          el.style.maxHeight = null;
+          el.previousElementSibling.querySelector("i").classList.remove("rotate-180");
+        }
+      });
+
+      // Toggle clicked FAQ
+      if (body.style.maxHeight) {
+        body.style.maxHeight = null;
+        icon.classList.remove("rotate-180");
+      } else {
+        body.style.maxHeight = body.scrollHeight + "px";
+        icon.classList.add("rotate-180");
+      }
+    });
+  });
+</script>
+
+
+<!-- Contact & Location Section -->
+<section id="contact" class="py-20">
+  <div class="container mx-auto px-4 md:px-6 bg-white p-6 md:p-12 rounded-2xl shadow-2xl animate-on-scroll">
+
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-extrabold gradient-text mb-4">Contact Us</h2>
+      <div class="section-separator"></div>
+      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+        Ready to begin your journey? We are here to help.
+      </p>
+    </div>
+
+    <!-- Contact + Map Grid -->
+    <div class="grid lg:grid-cols-2 gap-12">
+
+      <!-- Contact Cards with Gradient Background -->
+      <div class="p-8 rounded-2xl" style="background: linear-gradient(135deg, #f97316, #dc2626);">
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+          
+          <!-- Gmail -->
+          <div class="card bg-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition text-center">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=xyz@gmail.com&su=Inquiry%20from%20Website&body=Hello%20INFINITYY%20ACADEMY%2C%0A%0AI%20would%20like%20to%20know%20more%20about%20your%20courses." 
+               target="_blank" 
+               class="contact-icon inline-flex flex-col items-center space-y-3">
+              <i class="fab fa-google text-5xl text-red-600"></i>
+              <h3 class="text-lg md:text-xl font-bold text-primary">Email Us</h3>
+              <p class="text-gray-600 text-sm md:text-base"></p>
+            </a>
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="card bg-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition text-center">
+            <a href="https://wa.me/917837605299?text=Hello%20INFINITYY%20ACADEMY%2C%20I%20would%20like%20to%20know%20more%20about%20your%20courses." 
+               target="_blank" 
+               class="contact-icon inline-flex flex-col items-center space-y-3">
+              <i class="fab fa-whatsapp text-5xl text-green-600"></i>
+              <h3 class="text-lg md:text-xl font-bold text-primary">WhatsApp</h3>
+              <p class="text-gray-600 text-sm md:text-base"></p>
+            </a>
+          </div>
+
+          <!-- Phone -->
+          <div class="card bg-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition text-center">
+            <a href="tel:+917837055591" 
+               class="contact-icon inline-flex flex-col items-center space-y-3">
+              <i class="fas fa-phone text-5xl text-yellow-600"></i>
+              <h3 class="text-lg md:text-xl font-bold text-primary">Call Us</h3>
+              <p class="text-gray-600 text-sm md:text-base"></p>
+            </a>
+          </div>
+
+          <!-- Location -->
+          <div class="card bg-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition text-center">
+            <a href="https://maps.app.goo.gl/3gXuv1AnnEd1JVA99" 
+               target="_blank" 
+               class="contact-icon inline-flex flex-col items-center space-y-3">
+              <i class="fas fa-map-marker-alt text-5xl text-blue-600"></i>
+              <h3 class="text-lg md:text-xl font-bold text-primary">Visit Us</h3>
+              <p class="text-gray-600 text-sm md:text-base">
+                Thakur-Dawara Mandir Market,<br>
+                Gate no-03, MHC, Sector-13,<br>
+                Chandigarh
+              </p>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Google Maps Embed -->
+      <div class="card p-6 rounded-xl bg-gradient-to-r from-pink-100 via-rose-100 to-purple-100 text-gray-700 animate-on-scroll animate-delay-[400ms]">
+        <h3 class="text-2xl font-bold text-orange-600 mb-4">Our Location</h3>
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!4v1757839231318!6m8!1m7!1siTorTR3WUM2f5MRUEdEbVQ!2m2!1d30.71426170607221!2d76.83299930885848!3f110.07759981412823!4f13.762633120011785!5f0.7820865974627469" 
+          width="100%" 
+          height="550" 
+          style="border:0;" 
+          allowfullscreen 
+          loading="lazy" 
+          class="rounded-xl">
+        </iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Student Registration Form -->
+<section id="student-form" class="py-20">
+  <div class="container mx-auto px-4 md:px-6 bg-white p-6 md:p-12 rounded-2xl shadow-2xl animate-on-scroll">
+
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      
+      <!-- Main Heading -->
+      <h2 class="text-4xl md:text-5xl font-extrabold gradient-text mb-4">
+        Student Registration
+      </h2>
+
+      <!-- Typing Effect Offer -->
+      <h4 class="offer-typing text-2xl md:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600 drop-shadow-lg mx-auto"></h4>
+
+      <div class="section-separator mt-4"></div>
+
+      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mt-4">
+        Fill out the form to secure your spot for the upcoming batch.
+      </p>
+    </div>
+
+    <!-- Google Form Embed -->
+    <div class="max-w-3xl mx-auto space-y-6">
+      <iframe 
+        src="https://forms.gle/4CHsvQqCkWYAfGa99" 
+        width="100%" 
+        height="800" 
+        frameborder="0" 
+        marginheight="0" 
+        marginwidth="0" 
+        class="rounded-xl">
+        Loading…
+      </iframe>
+
+      <!-- Open in New Tab Button -->
+      <div class="text-center">
+        <a href="https://forms.gle/4CHsvQqCkWYAfGa99" target="_blank" 
+           class="inline-block bg-red-600 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-orange-500 transition">
+          <i class="fas fa-external-link-alt mr-2"></i> Open in New Tab
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Typing Effect Styles -->
+<style>
+  .offer-typing {
+    display: inline-block;
+    white-space: nowrap;
+    border-right: 3px solid rgba(255, 255, 255, 0.75); /* blinking cursor */
+    overflow: hidden;
+    animation: blinkCursor 0.8s step-end infinite;
+  }
+
+  @keyframes blinkCursor {
+    from { border-color: transparent; }
+    to   { border-color: rgba(255, 255, 255, 0.75); }
+  }
+</style>
+
+<!-- Typing Effect Script -->
+<script>
+  const offerElement = document.querySelector(".offer-typing");
+  const offers = [
+    "🎉 First 2 Classes FREE!",
+    "🔥 Limited Seats Available"
+  ];
+  let offerIndex = 0;
+  let charIndex = 0;
+  let typing = true;
+
+  function typeEffect() {
+    if (typing) {
+      if (charIndex < offers[offerIndex].length) {
+        offerElement.textContent += offers[offerIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeEffect, 100); // typing speed
+      } else {
+        typing = false;
+        setTimeout(typeEffect, 1500); // pause before deleting
+      }
+    } else {
+      if (charIndex > 0) {
+        offerElement.textContent = offers[offerIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(typeEffect, 50); // deleting speed
+      } else {
+        typing = true;
+        offerIndex = (offerIndex + 1) % offers.length; // next text
+        setTimeout(typeEffect, 500);
+      }
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", typeEffect);
+</script>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4 md:px-6 grid md:grid-cols-3 gap-8 text-center md:text-left">
+        
+        <!-- About Section -->
+        <div>
+            <h3 class="text-xl font-bold mb-4 gradient-text">INFINITYY ACADEMY</h3>
+            <p class="text-gray-400 text-sm">
+                Empowering students with quality education, experienced faculty, and a supportive environment to achieve their academic goals and beyond.
+            </p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+            <h3 class="text-xl font-bold mb-4 gradient-text">Quick Links</h3>
+            <ul class="space-y-2 text-gray-400">
+                <li><a href="#about" class="hover:text-red-500 transition-colors">About Us</a></li>
+                <li><a href="#courses" class="hover:text-red-500 transition-colors">Our Courses</a></li>
+                <li><a href="#faculty" class="hover:text-red-500 transition-colors">Faculty</a></li>
+                <li><a href="#contact" class="hover:text-red-500 transition-colors">Contact</a></li>
+            </ul>
+        </div>
+        
+        <!-- Social Media -->
+        <div>
+            <h3 class="text-xl font-bold mb-4 gradient-text">Follow Us</h3>
+            <div class="flex justify-center md:justify-start space-x-4 text-2xl">
+                <a href="#" class="hover:text-red-500 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-red-500 transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-red-500 transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-red-500 transition-colors"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p class="mt-8 text-gray-500 text-sm">
+                &copy; 2025 Infinityy Academy. All Rights Reserved. Developed with ❤️ by Shobhit Dwivedi
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+<script>
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+        const mobileNav = document.getElementById('mobileNav');
+        const menuIcon = document.getElementById('menuIcon');
+        if (mobileNav && menuIcon) {
+            mobileNav.classList.toggle('open');
+            menuIcon.classList.toggle('fa-bars');
+            menuIcon.classList.toggle('fa-times');
+        }
+    }
+
+    // Back to Top Button
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    if (backToTopBtn) {
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        };
+
+        backToTopBtn.addEventListener('click', () => {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        });
+    }
+
+    // Testimonial Slider
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const dots = document.querySelectorAll('.testimonial-dot');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (dots[i]) dots[i].classList.remove('active');
+        });
+        if (slides[index]) slides[index].classList.add('active');
+        if (dots[index]) dots[index].classList.add('active');
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    if (slides.length && dots.length) {
+        setInterval(nextSlide, 5000); // Auto-slide every 5 seconds
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+    }
+
+    // Photo Gallery Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    if (lightbox && lightboxImage && lightboxClose) {
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                lightbox.classList.add('show');
+                lightboxImage.src = item.src;
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('show');
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('show');
+            }
+        });
+    }
+
+    // FAQ Accordion
+    
+        // FAQ Accordion
+        const accordionHeaders = document.querySelectorAll('.faq-accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.closest('.faq-accordion-item');
+                item.classList.toggle('active');
+            });
+        });
+
+    // Skill Bar Animation
+    function animateSkillBars() {
+        const skills = [
+            { id: 'skill-1', percentage: 95 },
+            { id: 'skill-2', percentage: 90 },
+            { id: 'skill-3', percentage: 85 }
+        ];
+        skills.forEach(skill => {
+            const element = document.getElementById(skill.id);
+            if (element) {
+                element.style.width = skill.percentage + '%';
+            }
+        });
+    }
+
+    // Scroll-triggered animations using IntersectionObserver
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.2
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // Special case for skill bars
+                if (entry.target.id === 'why-us') {
+                    animateSkillBars();
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(section => {
+        observer.observe(section);
+    });
+
+    // Initialize the testimonial slider on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        showSlide(currentSlide);
+    });
+</script>
+
+</body>
+</html>
