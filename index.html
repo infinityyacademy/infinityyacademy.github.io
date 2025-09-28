@@ -744,7 +744,7 @@
           </div>
 
           <!-- Card 2 -->
-          <div class="card p-6 rounded-xl bg-red-50 text-red-600 animate-on-scroll animate-delay-[400ms]">
+          <div class="card p-6 rounded-xl bg-yellow-50 text-yellow-600 animate-on-scroll animate-delay-[400ms]">
             <i class="fas fa-users text-5xl mb-4"></i>
             <h3 class="font-bold text-xl mb-2">Small Batch Sizes</h3>
             <p class="text-gray-700">
@@ -753,7 +753,7 @@
           </div>
 
           <!-- Card 3 -->
-          <div class="card p-6 rounded-xl bg-yellow-50 text-yellow-600 animate-on-scroll animate-delay-[600ms]">
+          <div class="card p-6 rounded-xl bg-red-50 text-red-600 animate-on-scroll animate-delay-[600ms]">
             <i class="fas fa-chart-line text-5xl mb-4"></i>
             <h3 class="font-bold text-xl mb-2">Holistic Development</h3>
             <p class="text-gray-700">
@@ -951,9 +951,16 @@
             <img src="images\logo.png"
               class="faculty-img w-32 h-32 rounded-full mx-auto mb-4 object-cover cursor-pointer">
             <h3 class="text-xl font-bold text-orange-600 mb-2">Mr. Sudhir Sharma</h3>
-            <p class="text-gray-600 mb-2">Physics Expert</p>
+            <!-- Experience Highlight -->
+            <div class="flex items-center justify-center mb-4">
+              <span
+                class="inline-flex items-center bg-orange-100 text-orange-600 font-semibold px-4 py-1 rounded-full text-sm">
+                <i class="fas fa-chalkboard-teacher mr-2"></i> 20+ Years Teaching Experience
+              </span>
+            </div>
+            <p class="text-gray-700 font-medium mb-3">Physics Expert</p>
             <p class="text-sm text-gray-500">
-              M.Sc. Physics, B.sc. Non-Medical, B.ED. Science 20+ years Teaching Experience
+              M.Sc. Physics, B.sc. Non-Medical, B.ED. Science & Special Educator
             </p>
             <div class="flex justify-center space-x-1 text-yellow-400 mt-3">
               <i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -968,9 +975,17 @@
               src="https://images.unplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80"
               class="faculty-img w-32 h-32 rounded-full mx-auto mb-4 object-cover cursor-pointer">
             <h3 class="text-xl font-bold text-orange-600 mb-2">Mr. Ajay Sir</h3>
-            <p class="text-gray-600 mb-2">Chemistry Expert</p>
+
+            <!-- Experience Highlight -->
+            <div class="flex items-center justify-center mb-4">
+              <span
+                class="inline-flex items-center bg-orange-100 text-orange-600 font-semibold px-4 py-1 rounded-full text-sm">
+                <i class="fas fa-chalkboard-teacher mr-2"></i> 17+ Years Teaching Experience
+              </span>
+            </div>
+            <p class="text-gray-700 font-medium mb-3">Chemistry Expert</p>
             <p class="text-sm text-gray-500">
-              M.Sc. Chemistry, 15+ years Teaching Experience
+              M.Sc. Chemistry,
             </p>
             <div class="flex justify-center space-x-1 text-yellow-400 mt-3">
               <i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -982,6 +997,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- Modal for Enlarged Image -->
     <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 hidden flex items-center justify-center z-50">
@@ -1019,7 +1035,7 @@
 
 
 
-    <!-- Testimonials Section -->
+    <!-- What Our Students Say Section -->
     <section id="testimonials" class="py-20">
       <style>
         #testimonialSlider {
@@ -1118,7 +1134,7 @@
                 "INFINITYY ACADEMY changed my perspective on learning. The teachers are incredibly supportive and make
                 complex topics easy to understand. Thanks to them, I scored a distinction in my final exams!"
               </p>
-              <h4 class="font-bold text-orange-600 mt-6">- Rohit Sharma, Class 10</h4>
+              <h4 class="font-bold text-orange-600 mt-6">- -------, Class ---</h4>
             </div>
 
             <div class="testimonial-slide px-4 md:px-12 text-center">
@@ -1136,7 +1152,7 @@
                 "The faculty at Infinityy Academy is top-notch. They are not just teachers, but mentors who genuinely
                 care about your growth. My confidence in mathematics and science has never been higher."
               </p>
-              <h4 class="font-bold text-orange-600 mt-6">- Arjun Varma, Class 11</h4>
+              <h4 class="font-bold text-orange-600 mt-6">- ------ , Class ---</h4>
             </div>
           </div>
 
@@ -1637,174 +1653,185 @@
           </ul>
         </div>
 
-        <!-- Social Media -->
+        <!-- Contact Options -->
         <div>
-          <h3 class="text-xl font-bold mb-4 gradient-text">Follow Us</h3>
-          <div class="flex justify-center md:justify-start space-x-4 text-2xl">
-            <a href="#" class="hover:text-red-500 transition-colors"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="hover:text-red-500 transition-colors"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="hover:text-red-500 transition-colors"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="hover:text-red-500 transition-colors"><i class="fab fa-linkedin-in"></i></a>
+          <h3 class="text-xl font-bold mb-4 gradient-text">Get in Touch</h3>
+          <div class="flex justify-center md:justify-start space-x-6 text-2xl">
+
+            <!-- Phone -->
+            <a href="tel:+917837055591" class="hover:text-red-500 transition-colors" title="Call Us">
+              <i class="fas fa-phone-alt"></i>
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/917837605299?text=Hello%20INFINITYY%20ACADEMY%2C%20I%20would%20like%20to%20know%20more%20about%20your%20courses."
+              target="_blank" class="hover:text-green-500 transition-colors" title="Chat on WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+
+            <!-- Gmail -->
+            <a href="mailto:info@infinityyacademy.com" class="hover:text-red-500 transition-colors" title="Send Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+
+            <!-- Google Maps -->
+            <a href="https://maps.app.goo.gl/3gXuv1AnnEd1JVA99" target="_blank"
+              class="hover:text-blue-500 transition-colors" title="Find Us on Maps">
+              <i class="fas fa-map-marker-alt"></i>
+            </a>
+
           </div>
-          <p class="mt-8 text-gray-500 text-sm">
-            &copy; 2025 Infinityy Academy. All Rights Reserved. Developed with ❤️ by Shobhit Dwivedi
+
+          <!-- Developer Credit -->
+          <p class="mt-6 text-gray-500 text-sm text-center md:text-left">
+            © 2025 Infinityy Academy. All Rights Reserved. Developed with ❤️ by Shobhit Dwivedi
           </p>
         </div>
 
-      </div>
-    </footer>
+        <!-- Back to Top Button -->
+        <button id="backToTopBtn" aria-label="Back to top">
+          <i class="fas fa-arrow-up"></i>
+        </button>
 
-
-    <!-- Back to Top Button -->
-    <button id="backToTopBtn" aria-label="Back to top">
-      <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <script>
-      // Mobile Menu Toggle
-      function toggleMobileMenu() {
-        const mobileNav = document.getElementById('mobileNav');
-        const menuIcon = document.getElementById('menuIcon');
-        if (mobileNav && menuIcon) {
-          mobileNav.classList.toggle('open');
-          menuIcon.classList.toggle('fa-bars');
-          menuIcon.classList.toggle('fa-times');
-        }
-      }
-
-      // Back to Top Button
-      const backToTopBtn = document.getElementById('backToTopBtn');
-      if (backToTopBtn) {
-        window.onscroll = function () {
-          if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-            backToTopBtn.classList.add('show');
-          } else {
-            backToTopBtn.classList.remove('show');
+        <script>
+          // Mobile Menu Toggle
+          function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            const menuIcon = document.getElementById('menuIcon');
+            if (mobileNav && menuIcon) {
+              mobileNav.classList.toggle('open');
+              menuIcon.classList.toggle('fa-bars');
+              menuIcon.classList.toggle('fa-times');
+            }
           }
-        };
 
-        backToTopBtn.addEventListener('click', () => {
-          document.body.scrollTop = 0; // For Safari
-          document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        });
-      }
+          // Back to Top Button
+          const backToTopBtn = document.getElementById('backToTopBtn');
+          if (backToTopBtn) {
+            window.onscroll = function () {
+              if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                backToTopBtn.classList.add('show');
+              } else {
+                backToTopBtn.classList.remove('show');
+              }
+            };
 
-      // Testimonial Slider
-      let currentSlide = 0;
-      const slides = document.querySelectorAll('.testimonial-slide');
-      const dots = document.querySelectorAll('.testimonial-dot');
+            backToTopBtn.addEventListener('click', () => {
+              document.body.scrollTop = 0; // For Safari
+              document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            });
+          }
 
-      function showSlide(index) {
-        slides.forEach((slide, i) => {
-          slide.classList.remove('active');
-          if (dots[i]) dots[i].classList.remove('active');
-        });
-        if (slides[index]) slides[index].classList.add('active');
-        if (dots[index]) dots[index].classList.add('active');
-      }
+          // Testimonial Slider
+          let currentSlide = 0;
+          const slides = document.querySelectorAll('.testimonial-slide');
+          const dots = document.querySelectorAll('.testimonial-dot');
 
-      function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-      }
+          function showSlide(index) {
+            slides.forEach((slide, i) => {
+              slide.classList.remove('active');
+              if (dots[i]) dots[i].classList.remove('active');
+            });
+            if (slides[index]) slides[index].classList.add('active');
+            if (dots[index]) dots[index].classList.add('active');
+          }
 
-      if (slides.length && dots.length) {
-        setInterval(nextSlide, 5000); // Auto-slide every 5 seconds
-        dots.forEach((dot, index) => {
-          dot.addEventListener('click', () => {
-            currentSlide = index;
+          function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+          }
+
+          if (slides.length && dots.length) {
+            setInterval(nextSlide, 5000); // Auto-slide every 5 seconds
+            dots.forEach((dot, index) => {
+              dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+              });
+            });
+          }
+
+          // Photo Gallery Lightbox
+          const lightbox = document.getElementById('lightbox');
+          const lightboxImage = document.getElementById('lightboxImage');
+          const galleryItems = document.querySelectorAll('.gallery-item');
+          const lightboxClose = document.querySelector('.lightbox-close');
+
+          if (lightbox && lightboxImage && lightboxClose) {
+            galleryItems.forEach(item => {
+              item.addEventListener('click', () => {
+                lightbox.classList.add('show');
+                lightboxImage.src = item.src;
+              });
+            });
+
+            lightboxClose.addEventListener('click', () => {
+              lightbox.classList.remove('show');
+            });
+
+            lightbox.addEventListener('click', (e) => {
+              if (e.target === lightbox) {
+                lightbox.classList.remove('show');
+              }
+            });
+          }
+
+          // FAQ Accordion
+
+          // FAQ Accordion
+          const accordionHeaders = document.querySelectorAll('.faq-accordion-header');
+          accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+              const item = header.closest('.faq-accordion-item');
+              item.classList.toggle('active');
+            });
+          });
+
+          // Skill Bar Animation
+          function animateSkillBars() {
+            const skills = [
+              { id: 'skill-1', percentage: 95 },
+              { id: 'skill-2', percentage: 90 },
+              { id: 'skill-3', percentage: 85 }
+            ];
+            skills.forEach(skill => {
+              const element = document.getElementById(skill.id);
+              if (element) {
+                element.style.width = skill.percentage + '%';
+              }
+            });
+          }
+
+          // Scroll-triggered animations using IntersectionObserver
+          const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+          };
+
+          const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // Special case for skill bars
+                if (entry.target.id === 'why-us') {
+                  animateSkillBars();
+                }
+                observer.unobserve(entry.target);
+              }
+            });
+          }, observerOptions);
+
+          document.querySelectorAll('.animate-on-scroll').forEach(section => {
+            observer.observe(section);
+          });
+
+          // Initialize the testimonial slider on page load
+          document.addEventListener('DOMContentLoaded', () => {
             showSlide(currentSlide);
           });
-        });
-      }
-
-      // Photo Gallery Lightbox
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImage = document.getElementById('lightboxImage');
-      const galleryItems = document.querySelectorAll('.gallery-item');
-      const lightboxClose = document.querySelector('.lightbox-close');
-
-      if (lightbox && lightboxImage && lightboxClose) {
-        galleryItems.forEach(item => {
-          item.addEventListener('click', () => {
-            lightbox.classList.add('show');
-            lightboxImage.src = item.src;
-          });
-        });
-
-        lightboxClose.addEventListener('click', () => {
-          lightbox.classList.remove('show');
-        });
-
-        lightbox.addEventListener('click', (e) => {
-          if (e.target === lightbox) {
-            lightbox.classList.remove('show');
-          }
-        });
-      }
-
-      // FAQ Accordion
-
-      // FAQ Accordion
-      const accordionHeaders = document.querySelectorAll('.faq-accordion-header');
-      accordionHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-          const item = header.closest('.faq-accordion-item');
-          item.classList.toggle('active');
-        });
-      });
-
-      // Skill Bar Animation
-      function animateSkillBars() {
-        const skills = [
-          { id: 'skill-1', percentage: 95 },
-          { id: 'skill-2', percentage: 90 },
-          { id: 'skill-3', percentage: 85 }
-        ];
-        skills.forEach(skill => {
-          const element = document.getElementById(skill.id);
-          if (element) {
-            element.style.width = skill.percentage + '%';
-          }
-        });
-      }
-
-      // Scroll-triggered animations using IntersectionObserver
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.2
-      };
-
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            // Special case for skill bars
-            if (entry.target.id === 'why-us') {
-              animateSkillBars();
-            }
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll('.animate-on-scroll').forEach(section => {
-        observer.observe(section);
-      });
-
-      // Initialize the testimonial slider on page load
-      document.addEventListener('DOMContentLoaded', () => {
-        showSlide(currentSlide);
-      });
-    </script>
+        </script>
 
 </body>
 
 </html>
-
-
-
-
-
-
